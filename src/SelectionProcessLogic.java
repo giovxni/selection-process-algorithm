@@ -4,17 +4,17 @@ import java.util.concurrent.ThreadLocalRandom;
 public class SelectionProcessLogic {
     private double baseWage = 2000.0;
     private String[] candidates = {"FELIPE", "MÁRCIA", "JULIA", "PAULO", "AUGUSTO", "MÔNICA", "FABRÍCIO", "MIRELA", "DANIELA", "JORGE"};
-    int selectionedCandidates = 0;
+    int selectedCandidates = 0;
     int currentCandidate = 0;
 
     public void selectCandidates() {
-        while (selectionedCandidates < 5 && currentCandidate < candidates.length) {
+        while (selectedCandidates < 5 && currentCandidate < candidates.length) {
             String candidate = candidates[currentCandidate];
             double intendedWage = ThreadLocalRandom.current().nextDouble(1800, 2200);
             if (baseWage >= intendedWage) {
                 for (int x = 0; x < 1; x++) {
                     System.out.println("The candidate ".concat(candidate).concat(" was selected. "));
-                    selectionedCandidates++;
+                    selectedCandidates++;
                 }
                 int attempts = 1;
                 boolean stillAttempt = true;
@@ -35,8 +35,8 @@ public class SelectionProcessLogic {
                         System.out.println("Was not possible to contact ".concat(candidate).concat(" exceed maximum limit of attempts: ".concat(String.valueOf(attempts).concat(" attemtps."))));
                     }
                 }
+                currentCandidate++;
             }
-            currentCandidate++;
         }
     }
     public boolean pickUp() {
